@@ -4,12 +4,18 @@ TRAIN_RATIO = 0.9
 VALID_RATIO = 0.1
 YEARMONTHDAY = datetime.datetime.now().strftime("%Y%m%d")
 
+DEBUG_MODE = True
+
+def log(*s): # multiple args
+    if DEBUG_MODE:
+        print(s)
+
 params = {
-    'TRAIN_RATIO' : 0.95,
-    'VALID_RATIO' : 0.05,
-    'BATCH_SIZE' : 16, 
-    'EPOCHS' : 300, 
-    'MAX_SEQUENCE_LENGTH' : 50
+    'TRAIN_RATIO' : 0.9,
+    'VALID_RATIO' : 0.1,
+    'BATCH_SIZE' : 1, 
+    'EPOCHS' : 20, 
+    'MAX_SEQUENCE_LENGTH' : 30
 }
 
 SAVE_NAME_list = [
