@@ -1,1 +1,4 @@
 venv
+runs/
+wandb/
+__pycache__/
