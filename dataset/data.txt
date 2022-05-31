@@ -41070,7 +41070,6 @@ whiskey	위스키
 negative	네거티브
 pick up	픽업
 St. Johnsville	세인트 존스빌
-null	널
 reamer	리머
 condom	콘돔
 Olympic	올림픽
