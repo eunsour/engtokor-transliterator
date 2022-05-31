@@ -1,7 +1,5 @@
 import datetime
 
-TRAIN_RATIO = 0.9
-VALID_RATIO = 0.1
 YEARMONTHDAY = datetime.datetime.now().strftime("%Y%m%d")
 
 DEBUG_MODE = True
