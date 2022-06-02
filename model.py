@@ -1,29 +1,40 @@
-from simpletransformers.t5 import T5Model, T5Args
+from config import *
 
-class Seq2seqAtt(object):
+
+class mT5(object):
     def __init__(self, args):
         self.args = args
         pass
 
     def build_model(self):
-        model_args = T5Args()
-        model_args.max_seq_length = self.args["MAX_SEQUENCE_LENGTH"]
-        model_args.train_batch_size = self.args["BATCH_SIZE"]
-        model_args.eval_batch_size = self.args["BATCH_SIZE"]
-        model_args.num_train_epochs = self.args["EPOCHS"]
-        model_args.evaluate_during_training = True
-        model_args.evaluate_during_training_steps = 30000
-        model_args.use_multiprocessing = False
-        model_args.fp16 = False
-        model_args.save_steps = -1
-        model_args.save_eval_checkpoints = False
-        model_args.no_cache = True
-        model_args.reprocess_input_data = True
-        model_args.overwrite_output_dir = True
-        model_args.preprocess_inputs = False
-        model_args.num_return_sequences = 1
-        model_args.best_model_dir = f"outputs/best_model"
-        model_args.output_dir = f"outputs/"
-        model_args.wandb_project = "eng2kor transliterator using mT5-base"
 
-        self.model = T5Model("mt5", "google/mt5-base", use_cuda=False, args=model_args)
+        self.train_params = {
+            "max_seq_length": self.args["MAX_SEQUENCE_LENGTH"],
+            "train_batch_size": self.args["BATCH_SIZE"],
+            "max_seq_length": self.args["MAX_SEQUENCE_LENGTH"],
+            "train_batch_size": self.args["BATCH_SIZE"],
+            "eval_batch_size": self.args["BATCH_SIZE"],
+            "num_train_epochs": self.args["EPOCHS"],
+            "evaluate_during_training": True,
+            "evaluate_during_training_steps": 30000,
+            "use_multiprocessing": False,
+            "fp16": False,
+            "save_steps": -1,
+            "save_eval_checkpoints": False,
+            "no_cache": True,
+            "reprocess_input_data": True,
+            "overwrite_output_dir": True,
+            "preprocess_inputs": False,
+            "num_return_sequences": 1,
+            "best_model_dir": f"{SAVE_NAME}/best_model",
+            "output_dir": f"{SAVE_NAME}/",
+            "overwrite_output_dir": True,
+            "wandb_project": "eng2kor transliterator using mT5-base",
+        }
+
+        self.pred_params = {
+            "max_length": self.args["MAX_LENGTH"],
+            "max_seq_length": self.args["MAX_SEQUENCE_LENGTH"],
+            "length_panalty": self.args["LENGTH_PANALTY"],
+            "num_beams": self.args["NUM_BEAMS"],
+        }
