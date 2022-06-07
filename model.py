@@ -26,8 +26,8 @@ class mT5(object):
             "overwrite_output_dir": True,
             "preprocess_inputs": False,
             "num_return_sequences": 1,
-            "best_model_dir": f"{SAVE_NAME}/best_model",
-            "output_dir": f"{SAVE_NAME}/",
+            "best_model_dir": f"outputs-{SAVE_NAME}/best_model",
+            "output_dir": f"outputs-{SAVE_NAME}/",
             "overwrite_output_dir": True,
             "wandb_project": "eng2kor transliterator using mT5-base",
         }
