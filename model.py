@@ -11,8 +11,6 @@ class mT5(object):
         self.train_params = {
             "max_seq_length": self.args["MAX_SEQUENCE_LENGTH"],
             "train_batch_size": self.args["BATCH_SIZE"],
-            "max_seq_length": self.args["MAX_SEQUENCE_LENGTH"],
-            "train_batch_size": self.args["BATCH_SIZE"],
             "eval_batch_size": self.args["BATCH_SIZE"],
             "num_train_epochs": self.args["EPOCHS"],
             "evaluate_during_training": True,
