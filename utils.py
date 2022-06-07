@@ -2,9 +2,10 @@ import random
 
 from config import log
 
+
 def load_data(path):
     data = []
-    with open(path, 'r', encoding='utf-8-sig') as rf:
+    with open(path, "r", encoding="utf-8-sig") as rf:
         for line in rf:
             line = line.strip()
             data.append(line)

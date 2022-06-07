@@ -13,15 +13,14 @@ def log(*s):  # multiple args
 
 
 params = {
-    "TRAIN_RATIO" : 0.9,
-    "VALID_RATIO" : 0.1,
-    "BATCH_SIZE" : 1,
-    "EPOCHS" : 20,
-    
-    "MAX_SEQUENCE_LENGTH" : 30,
-    "MAX_LENGTH" : 96,
-    "LENGTH_PANALTY" : 1,
-    "NUM_BEAMS" : 1,
+    "TRAIN_RATIO": 0.9,
+    "VALID_RATIO": 0.1,
+    "BATCH_SIZE": 1,
+    "EPOCHS": 20,
+    "MAX_SEQUENCE_LENGTH": 30,
+    "MAX_LENGTH": 96,
+    "LENGTH_PANALTY": 1,
+    "NUM_BEAMS": 1,
 }
 
 SAVE_NAME_list = [

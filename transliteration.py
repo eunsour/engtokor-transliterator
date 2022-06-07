@@ -14,6 +14,7 @@ from model import mT5
 parser = argparse.ArgumentParser(description="")
 parser.add_argument("--train", action="store_true", help="Train Mode")
 parser.add_argument("--test", action="store_true", help="Test Mode")
+parser.add_argument("--decode", action="store_true", help="Decode Mode")
 args = parser.parse_args()
 
 
@@ -53,7 +54,7 @@ class Transliterator(object):
         log("> Train Model Start...")
 
         self.train_df["prefix"], self.eval_df["prefix"] = "", ""
-        
+
         self.model = T5Model(
             "mt5", "google/mt5-base", use_cuda=CUDA, args=self.mt5.train_params
         )
@@ -67,7 +68,8 @@ class Transliterator(object):
 
 def prediction(model, text):
     log("> Pretrained Model Start...")
-    return print(model.model.predict(text))
+    result = model.model.predict(text)
+    return result
 
 
 if __name__ == "__main__":
@@ -89,4 +91,9 @@ if __name__ == "__main__":
             "nike",
         ]
 
-        prediction(model, test_list)
+        [print(i) for i in prediction(model, test_list)]
+
+    elif args.decode:
+        model.use_pretrained_model()
+        input_text = str(input(">> "))
+        print("".join(prediction(model, input_text)))

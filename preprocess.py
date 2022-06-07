@@ -15,7 +15,7 @@ def preprocessing(data):
     kor to eng  토론토     Toronto
     ... ... ...
     """
-    
+
     preprocess_inputs = []
 
     for i, _ in enumerate(data):
@@ -25,6 +25,8 @@ def preprocessing(data):
         preprocess_inputs.append(["eng to kor", source_eng, target_kor])
         preprocess_inputs.append(["kor to eng", target_kor, source_eng])
 
-    df = pd.DataFrame(preprocess_inputs, columns=["prefix", "input_text", "target_text"])
+    df = pd.DataFrame(
+        preprocess_inputs, columns=["prefix", "input_text", "target_text"]
+    )
 
     return df
