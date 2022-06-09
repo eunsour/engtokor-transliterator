@@ -9,8 +9,6 @@
 
 ## Prerequisites
 ```
-$ python3 -m venv venv
-$ . venv/bin/activate
 $ pip install -r requirements.txt
 ```
 `CUDA` 버전에 맞는 `torch` 의 설치가 필요합니다.
@@ -48,18 +46,24 @@ attention       :       어텐션
 
 ```bash
 $ python3 transliteration.py --decode
+종료는 'q' 입니다.
 >> transformer
 ('> Pretrained Model Start...',)
 Generating outputs: 100%|██████████████████████████████████████| 1/1 [00:00<00:00, 10.81it/s]
 Decoding outputs: 100%|██████████████████████████████████████| 1/1 [00:00<00:00,  1.47it/s]
 트랜스포머
+>> kakao
+Generating outputs: 100%|██████████████████████████████████████| 1/1 [00:00<00:00, 9.71it/s]
+Decoding outputs: 100%|██████████████████████████████████████| 1/1 [00:00<00:00,  5.78it/s]
+카카오
+>>
 ```
 <br>
 
 ## Run Gradio app
 ```bash
-$ python app.py
-Running on local URL:  http://127.0.0.1:7861/
+$ python transliteration.py --gradio
+Running on local URL:  http://127.0.0.1:7860/
 
 To create a public link, set `share=True` in `launch()`.
 ```
