@@ -1,5 +1,6 @@
 import logging
 import argparse
+import gradio as gr
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -66,10 +67,10 @@ class Transliterator(object):
         )
 
 
-def prediction(model, text):
+def prediction(input_text):
     log("> Pretrained Model Start...")
-    result = model.model.predict(text)
-    return result
+    model.use_pretrained_model()
+    return "".join(model.model.predict(input_text))
 
 
 if __name__ == "__main__":
@@ -79,21 +80,42 @@ if __name__ == "__main__":
     if args.train:
         model.run_train()
 
+
     elif args.test:
+        log("> Pretrained Model Start...")
         model.use_pretrained_model()
+
         test_list = [
+            "machinelearning",
+            "deeplearning",
+            "transformer",
             "attention",
-            "tokenizer",
-            "transliterator",
-            "suddenly",
-            "mecab",
-            "adidas",
-            "nike",
         ]
 
-        [print(i) for i in prediction(model, test_list)]
+        [print(f'{i}\t:\t{j}') for i, j in zip(test_list, model.model.predict(test_list))]
+
 
     elif args.decode:
-        model.use_pretrained_model()
-        input_text = str(input(">> "))
-        print("".join(prediction(model, input_text)))
+        print("종료는 'q' 입니다.")
+
+        while True:
+            input_text = str(input(">> "))
+
+            if input_text == "q":
+                break
+
+            print(prediction(input_text))
+
+
+    elif args.gradio:
+        iface = gr.Interface(
+            fn=prediction,
+            inputs=gr.inputs.Textbox(type="str", label="Input Text"),
+            outputs=gr.outputs.Textbox(),
+            title="English to Korean Transliteration",
+            description="Model for Transliterating English to Korean using a Google mT-5</a>",
+            article='Author: <a href="https://huggingface.co/eunsour">Eunsoo Kang</a> . Using training and inference script from <a href="https://github.com/eunsour/engtokor-transliterator.git">eunsour/engtokor-transliterator</a><p><center><img src="https://visitor-badge.glitch.me/badge?page_id=eunsour/en-ko-transliterator" alt="visitor badge"></center></p>',
+            examples=[["transformer"], ["attention"]],
+        )
+
+        iface.launch(enable_queue=True)
