@@ -16,6 +16,7 @@ parser = argparse.ArgumentParser(description="")
 parser.add_argument("--train", action="store_true", help="Train Mode")
 parser.add_argument("--test", action="store_true", help="Test Mode")
 parser.add_argument("--decode", action="store_true", help="Decode Mode")
+parser.add_argument("--gradio", action="store_true", help="gradio Mode")
 args = parser.parse_args()
 
 
