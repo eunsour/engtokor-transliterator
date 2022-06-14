@@ -3,6 +3,8 @@
 <br>
 [허깅페이스](https://huggingface.co/models?pipeline_tag=text2text-generation&sort=downloads)의 ```Text2Text Generation``` Task 의 사전학습 언어 모델을 사용하였습니다.
 
+```Fine-tuning``` 한 음차 변환 모델은 [여기](https://huggingface.co/eunsour/en-ko-transliterator)에서 확인하실 수 있습니다.
+
 - Use pre-trained model from [Google-mT5 : Multilingual T5](https://huggingface.co/google/mt5-base)
 
 <br>
@@ -31,6 +33,8 @@ $ python3 transliteration.py --train
 ('> Train Model Start...',)
 INFO:simpletransformers.t5.t5_model: Training started
 ```
+<br>
+
 ### ver2. Use pre-trained language model
 ```bash
 $ python3 transliteration.py --test
