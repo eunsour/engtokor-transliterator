@@ -26,7 +26,7 @@ transformers_logger.setLevel(logging.WARNING)
 
 
 data_path = "./dataset/data.txt"
-pretrained_model_path = "./outputs/best_model"
+pretrained_model_path = "./outputs"
 
 
 class Transliterator(object):
